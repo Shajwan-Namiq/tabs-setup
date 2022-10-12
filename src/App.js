@@ -64,9 +64,23 @@ const { company, dates, duties, title } = jobs[value];
         <section class="text-gray-600 body-font">
           <div class="container   mx-auto   flex-wrap">
             <div class="  relative pt-10 pb-20 sm:items-center md:w-2/3 mx-auto">
-             
-              <div class="flex-shrink-0 w-20 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">
-                <button className="">button</button>
+              <div class="  flex-shrink-0 w-96 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">
+                
+
+                {jobs.map((item, index) => {
+                  return (
+                  <div className='mx-2 border-x-2'>
+                     <button
+                      key={item.id}
+                      onClick={() => setValue(index)}
+                      className={`job-btn ${index === value && "active-btn"}`}
+                    >
+                      {item.company}
+                    </button>
+                  </div>
+                   
+                  );
+                })}
               </div>
 
               <div class="flex-grow md:pl-8 pl-6  sm:items-center items-start flex-col sm:flex-row">
@@ -77,13 +91,11 @@ const { company, dates, duties, title } = jobs[value];
                         <FaAngleDoubleRight></FaAngleDoubleRight>
                       </div>
                       <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                  <p class="leading-relaxed">{duty}</p>
-                </div>  
+                        <p class="leading-relaxed">{duty}</p>
+                      </div>
                     </div>
                   );
                 })}
-
-               
               </div>
             </div>
           </div>
